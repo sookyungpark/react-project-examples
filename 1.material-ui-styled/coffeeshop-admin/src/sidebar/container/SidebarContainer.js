@@ -7,7 +7,7 @@ import {useHistory} from "react-router"
 import {useTranslation} from "react-i18next"
 import SidebarFooter from "../component/SidebarFooter"
 import SidebarHeader from "../component/SidebarHeader"
-import {useDispatch, useSelector} from "react-redux"
+import {useDispatch} from "react-redux"
 import {changeLanguage} from "../../app/actions"
 
 const SidebarContainer = ({opened, handleClickClose}) => {
@@ -15,7 +15,6 @@ const SidebarContainer = ({opened, handleClickClose}) => {
   const history = useHistory()
 
   const dispatch = useDispatch()
-  //const currentLanguage = useSelector(state => (state.global ? state.global.language : "en"))
 
   const handleChangeLanguage = (language) => {
     dispatch(changeLanguage(language))

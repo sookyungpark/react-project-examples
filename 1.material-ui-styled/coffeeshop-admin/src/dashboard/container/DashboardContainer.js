@@ -1,8 +1,4 @@
 import React from 'react'
-import {bindActionCreators, compose} from "redux"
-import {withRouter} from "react-router"
-import connect from "react-redux/es/connect/connect"
-import * as sidebarActions from "../../sidebar/actions"
 import {createStyles, withStyles} from '@material-ui/core/styles'
 
 const styles = (theme) => createStyles({
@@ -22,30 +18,12 @@ const styles = (theme) => createStyles({
   }
 })
 
-const connector = connect(
-  state => {
-    return {
-      sidebar: state.sidebar
-    }
-  },
-  dispatch => ({
-    actions: {
-      sidebar: bindActionCreators({...sidebarActions}, dispatch)
-    }
-  })
-)
-
-const enhance = compose(
-  connector,
-  withRouter,
-  withStyles(styles))
-
-const DashboardContainer = enhance(props => {
+const DashboardContainer = (props) => {
   return (
     <React.Fragment>
       <div className={props.classes.contents} />
     </React.Fragment>
   )
-})
+}
 
-export default DashboardContainer
+export default withStyles(styles)(DashboardContainer)
